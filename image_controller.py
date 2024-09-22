@@ -29,12 +29,6 @@ class ImageController:
         if inverted_image:
             self.view.display_image(inverted_image)
 
-    def convert_to_grayscale(self) -> None:
-        if self.model.pixelated_image:
-            grayscale_image = self.model.pixelated_image.convert("L")
-            self.model.pixelated_image = grayscale_image
-            self.view.display_image(grayscale_image)
-
 def main():
     root = tk.Tk()
     app = ImageController(root)

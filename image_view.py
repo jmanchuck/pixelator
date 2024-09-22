@@ -30,9 +30,6 @@ class ImageView:
         invert_button = tk.Button(master, text="Invert Image", command=self.controller.invert_colours)
         invert_button.pack()
 
-        grayscale_button = tk.Button(master, text="Convert to Grayscale", command=self.controller.convert_to_grayscale)
-        grayscale_button.pack()
-
         self.photo = None
 
     def display_image(self, image: Image.Image) -> None:
