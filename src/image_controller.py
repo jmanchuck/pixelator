@@ -2,6 +2,7 @@ import tkinter as tk
 from image_model import ImageModel
 from image_view import ImageView
 
+
 class ImageController:
     def __init__(self, root: tk.Tk):
         self.model = ImageModel()
@@ -30,7 +31,9 @@ class ImageController:
 
     def toggle_invert_colours(self) -> None:
         """Toggle the invert colors option and reapply the pipeline."""
-        self.invert_active = bool(self.view.invert_var.get())  # Get the current toggle state
+        self.invert_active = bool(
+            self.view.invert_var.get()
+        )  # Get the current toggle state
         self.reapply_pipeline()
 
     def reapply_pipeline(self) -> None:
@@ -39,7 +42,9 @@ class ImageController:
         self.model.reset_pipeline()
 
         # Apply brightness transformation
-        self.model.add_transformation(self.model.apply_brightness(self.brightness_value))
+        self.model.add_transformation(
+            self.model.apply_brightness(self.brightness_value)
+        )
 
         # Apply pixelation if needed
         if self.pixel_size > 1:
@@ -64,11 +69,8 @@ class ImageController:
         if file_path:
             self.model.save_image(file_path)
 
-def main():
-    """Main function to start the application."""
+
+if __name__ == "__main__":  # pragma: no cover
     root = tk.Tk()
     app = ImageController(root)  # Initialize the controller
     root.mainloop()  # Start the Tkinter event loop
-
-if __name__ == "__main__":
-    main()
